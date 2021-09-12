@@ -5,7 +5,7 @@ import numpy as np
 CITY_DATA = { 'chicago': 'chicago.csv',
               'new york city': 'new_york_city.csv',
               'washington': 'washington.csv' }
-
+month_filter = ['january', 'february', 'march', 'april', 'may', 'june', 'all']
 def get_filters():
     """
     Asks user to specify a city, month, and day to analyze.
@@ -16,17 +16,17 @@ def get_filters():
         (str) day - name of the day of week to filter by, or "all" to apply no day filter
     """
     print('Hello! Let\'s explore some US bikeshare data!')
-    # get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
+    # get user input for city (chicago, new york city, washington).
     while True:
         city = input('Would you like to see data for chicago, new york city, or washington? ').lower()
         if city in CITY_DATA:
             break
         else:
             print('Please renter a valid city name.')
-    #while city == 'Chicago' || city == 'New York' || city == 'Washigton':# get user input for month (all, january, february, ... , june)
+    # while city == 'Chicago' || city == 'New York' || city == 'Washigton':# get user input for month (all, january, february, ... , june)
     while True:
         month = input('Do you want details specific to a particular month? if yes, type month name within first six months esle type \'all\': ').lower()
-        if month in ('january', 'february', 'march', 'april', 'may', 'june', 'all'):
+        if month in month_filter:
             break
         else:
             print('Please renter a valid month name.')
@@ -172,6 +172,7 @@ def user_stats(df, city):
 
 def display_data(df):
     i = 0
+    # get users input by yes or no, if they want to see five row data or not.
     while True:
         choice = input('Would you like to see five more row data? yes or no. ').lower()
         if choice == 'yes':
@@ -181,7 +182,7 @@ def display_data(df):
             break
         else:
             print('PLease renter yes or no.')
-            
+
 
 def main():
     while True:
@@ -193,6 +194,7 @@ def main():
         trip_duration_stats(df)
         user_stats(df, city)
         display_data(df)
+        # get users input by yes or no, if they want to restar.
         restart = input('\nWould you like to restart? Enter yes or no.\n')
         if restart.lower() != 'yes':
             break
