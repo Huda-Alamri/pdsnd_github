@@ -39,7 +39,7 @@ def get_filters():
         else:
             print('Please renter a valid day name.')
 
-    print('-'*40)
+    print('-'*60)
     return city, month, day
 
 
